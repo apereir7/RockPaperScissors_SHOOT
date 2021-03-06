@@ -16,19 +16,48 @@
 
 
 function computerPlay () {
-  let rock = "rock";
-  let paper = "paper";
-  let scissors = "scissors";
+  let rock = `rock`;
+  let paper = `paper`;
+  let scissors = `scissors`;
   
   let RockPaperScissors = Array(rock,paper,scissors);
 
   let option = RockPaperScissors[Math.floor(Math.random() * RockPaperScissors.length)];
-
   return option;
 }
 
 
-console.log(computerPlay());
+const computerSelection = computerPlay();
+
+
+const playerSelection= `rock`;
+
+function playRound (computerSelection, playerSelection) {
+  if (computerSelection== playerSelection) {
+    return `tie game`;
+  }else if (computerSelection == `paper` && playerSelection == `rock`) {
+    return `You lose`;
+  }else if (computerSelection == `paper` && playerSelection ==`scissors`) {
+    return `You win`;
+  }else if (computerSelection == `scissors` && playerSelection == `paper`) {
+    return `You lose`;
+  }else if (computerSelection == `scissors` && playerSelection == `rock`) {
+    return `You win`;
+  }else if (computerSelection == `rock` && playerSelection == `scissors`) {
+    return `You lose`;
+  }else if (computerSelection== `rock` && playerSelection == `paper`) {
+    return `You win`;
+  }
+
+}
+
+
+
+console.log(computerSelection);
+
+
+
+console.log(playRound(computerSelection, playerSelection));
 
 </script>
 </body>

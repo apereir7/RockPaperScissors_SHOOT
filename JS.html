@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>stuff</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  
+<script>
+
+
+
+
+
+
+
+
+function computerPlay () {
+  let rock = "rock";
+  let paper = "paper";
+  let scissors = "scissors";
+  
+  let RockPaperScissors = Array(rock,paper,scissors);
+
+  let option = RockPaperScissors[Math.floor(Math.random() * RockPaperScissors.length)];
+
+  return option;
+}
+
+
+console.log(computerPlay());
+
+</script>
+</body>
+</html>
