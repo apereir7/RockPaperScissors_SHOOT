@@ -8,56 +8,62 @@
   
 <script>
 
+let computerSelection;
+
+let playerSelection;
 
 
-
-
-
-
-
-function computerPlay () {
-  let rock = `rock`;
-  let paper = `paper`;
-  let scissors = `scissors`;
+function playRound ( computerSelection, playerSelection) {
   
-  let RockPaperScissors = Array(rock,paper,scissors);
-
-  let option = RockPaperScissors[Math.floor(Math.random() * RockPaperScissors.length)];
-  return option;
-}
-
-
-const computerSelection = computerPlay();
-
-
-const playerSelection= `rock`;
-
-function playRound (computerSelection, playerSelection) {
-  if (computerSelection== playerSelection) {
-    return `tie game`;
+  function computerPlay () { // had to nest this function inside 'playRound' function- 
+    let rock = `rock`;       //or else the output of this function wouldn't change- 
+    let paper = `paper`;     //when playing multiple rounds without refresing page.
+    let scissors = `scissors`;
+    let RockPaperScissors = Array(rock,paper,scissors);
+    let option = RockPaperScissors[Math.floor(Math.random() * RockPaperScissors.length)];
+    return option;
+  }
+  computerSelection= computerPlay();
+  playerSelection =  prompt(`Rock, Paper, or Scissors?`).toLowerCase(); //Nested this variable because it is a prompt- 
+                                                                        //and would prompt the user twice just to play round-
+                                                                        //when not inside of this playRound function.
+  
+  if (computerSelection == playerSelection) {
+    return `The computer also picked that! It's a tie. Try again`;
   }else if (computerSelection == `paper` && playerSelection == `rock`) {
-    return `You lose`;
+    return `You lose. Paper beats Rock`;
   }else if (computerSelection == `paper` && playerSelection ==`scissors`) {
-    return `You win`;
+    return `You win. Scissors beats Paper`;
   }else if (computerSelection == `scissors` && playerSelection == `paper`) {
-    return `You lose`;
+    return `You lose. Paper beats scissors`;
   }else if (computerSelection == `scissors` && playerSelection == `rock`) {
-    return `You win`;
+    return `You win. Rock beats scissors`;
   }else if (computerSelection == `rock` && playerSelection == `scissors`) {
-    return `You lose`;
-  }else if (computerSelection== `rock` && playerSelection == `paper`) {
-    return `You win`;
+    return `You lose. Rock beats Scissors`;
+  }else if (computerSelection == `rock` && playerSelection == `paper`) {
+    return `You win. Paper beats Rock.`;
   }
 
 }
 
 
 
-console.log(computerSelection);
 
 
 
-console.log(playRound(computerSelection, playerSelection));
+
+
+function game () {
+  console.log(`Round 1 results`);
+  console.log(playRound(computerSelection,playerSelection));
+  console.log(`Round 2 results`);
+  console.log(playRound(computerSelection,playerSelection));
+}
+
+
+
+console.log(game());
+
 
 </script>
 </body>
