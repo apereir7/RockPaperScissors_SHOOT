@@ -13,7 +13,13 @@ let computerSelection;
 let playerSelection;
 
 
-function playRound ( computerSelection, playerSelection) {
+
+let win;
+let lose;
+let tie;
+
+
+function playRound(computerSelection, playerSelection) {
   
   function computerPlay () { // had to nest this function inside 'playRound' function- 
     let rock = `rock`;       //or else the output of this function wouldn't change- 
@@ -25,27 +31,125 @@ function playRound ( computerSelection, playerSelection) {
   }
   computerSelection= computerPlay();
   playerSelection =  prompt(`Rock, Paper, or Scissors?`).toLowerCase(); //Nested this variable because it is a prompt- 
-                                                                        //and would prompt the user twice just to play round-
+                                                                        //and would prompt the user twice just to play 1 round-
                                                                         //when not inside of this playRound function.
   
+
   if (computerSelection == playerSelection) {
-    return `The computer also picked that! It's a tie. Try again`;
+    return tie;
   }else if (computerSelection == `paper` && playerSelection == `rock`) {
-    return `You lose. Paper beats Rock`;
+    return lose;
   }else if (computerSelection == `paper` && playerSelection ==`scissors`) {
-    return `You win. Scissors beats Paper`;
+    return win;
   }else if (computerSelection == `scissors` && playerSelection == `paper`) {
-    return `You lose. Paper beats scissors`;
+    return lose;
   }else if (computerSelection == `scissors` && playerSelection == `rock`) {
-    return `You win. Rock beats scissors`;
+    return win;
   }else if (computerSelection == `rock` && playerSelection == `scissors`) {
-    return `You lose. Rock beats Scissors`;
+    return lose;
   }else if (computerSelection == `rock` && playerSelection == `paper`) {
-    return `You win. Paper beats Rock.`;
+    return win;
   }
 
 }
 
+win = `win`;
+lose = `lose`;
+tie = `tie`;
+
+
+function game() {
+
+  console.log(`round 1`)
+  let round1 =playRound(computerSelection,playerSelection);
+  console.log(round1);
+
+  console.log(`round 2`);
+  let round2 =playRound(computerSelection, playerSelection);
+  console.log(round2);
+
+  console.log(`round 3`)
+  let round3 =playRound(computerSelection,playerSelection);
+  console.log(round3);
+
+
+  if (round1==round2==round3==win) {
+    console.log(`You win. Game, set, match`)
+    return;
+  }else if (round1==round2==round3==lose) {
+    console.log(`You lost the game. Sorry`);
+    return;
+  }
+
+  console.log(`round 4`)
+  let round4 =playRound(computerSelection,playerSelection);
+  console.log(round4);
+
+  if (round1==round2==round4==lose) {
+    console.log(`You lost the game. Sorry`);
+    return;
+  }else if (round1==round3==round4==lose) {
+    console.log(`You lost the game. Sorry`);
+    return;
+  }else if (round1==round2==round4==win) {
+    console.log(`You win. Game, set, match`);
+    return;
+  }else if (round1==round3==round4==win) {
+    console.log(`You win. Game, set, match`);
+    return;
+  }else if (round2==round3==round4==lose) {
+    console.log(`You lost the game. Sorry`);
+    return;
+  }else if (round2==round3==round4==win) {
+    console.log(`You win. Game, set, match`);
+    return;
+  } 
+
+  console.log(`round 5`)
+  let round5 =playRound(computerSelection,playerSelection);
+  console.log(round5);
+
+  if (round1==round2==round5==win) {
+    console.log(`You win. Game, set, match`);
+    return;
+  } else if (round1==round3==round5==win) {
+    console.log(`You win. Game, set, match`);
+    return;
+  }else if (round1==round4==round5==win) {
+    console.log(`You win. Game, set, match`);
+    return;
+  }else if (round3==round4==round5==win) {
+    console.log(`You win. Game, set, match`);
+    return;
+  }else if (round2==round4==round5==win) {
+    console.log(`You win. Game, set, match`);
+    return;
+  }else if (round2=round3==round5==win) {
+    console.log(`You win. Game, set, match`);
+    return;      //break
+  }else if (round1==round2==round5==lose) {
+    console.log(`You lost the game. Sorry`);
+    return;
+  } else if (round1==round3==round5==lose) {
+    console.log(`You lost the game. Sorry`);
+    return;
+  }else if (round1==round4==round5==lose) {
+    console.log(`You lost the game. Sorry`);
+    return;
+  }else if (round3==round4==round5==lose) {
+    console.log(`You lost the game. Sorry`);
+    return;
+  }else if (round2==round4==round5==lose) {
+    console.log(`You lost the game. Sorry`);
+    return;
+  }else if (round2=round3==round5==lose) {
+    console.log(`You lost the game. Sorry`);
+    return;
+  }else {
+    console.log(`tie game`);
+  }
+
+  
 
 
 
@@ -53,17 +157,14 @@ function playRound ( computerSelection, playerSelection) {
 
 
 
-function game () {
-  console.log(`Round 1 results`);
-  console.log(playRound(computerSelection,playerSelection));
-  console.log(`Round 2 results`);
-  console.log(playRound(computerSelection,playerSelection));
 }
 
 
 
-console.log(game());
 
+
+
+game();
 
 </script>
 </body>
